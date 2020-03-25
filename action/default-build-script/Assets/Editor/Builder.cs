@@ -95,7 +95,10 @@ namespace UnityBuilderAction
 
       // Perform build
       BuildReport buildReport = BuildPipeline.BuildPlayer(buildOptions);
-
+      
+      //Perform bundle build
+	    BuildPipeline.BuildAssetBundles(buildOptions.locationPathName,BuildAssetBundleOptions.None,buildOptions.target);
+      
       // Summary
       BuildSummary summary = buildReport.summary;
       ReportSummary(summary);
@@ -110,7 +113,7 @@ namespace UnityBuilderAction
       Console.WriteLine(
         $"{EOL}" +
         $"###########################{EOL}" +
-        $"#      Build results      #{EOL}" +
+        $"#      Build results!      #{EOL}" +
         $"###########################{EOL}" +
         $"{EOL}" +
         $"Duration: {summary.totalTime.ToString()}{EOL}" +
