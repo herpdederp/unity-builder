@@ -96,6 +96,12 @@ namespace UnityBuilderAction
       // Perform build
       BuildReport buildReport = BuildPipeline.BuildPlayer(buildOptions);
 
+	  string directory = "AssetBundles/StandaloneWindows";
+      Directory.CreateDirectory(directory);
+
+	  //Perform bundle build
+	  BuildPipeline.BuildAssetBundles(directory,BuildAssetBundleOptions.None,buildOptions.target);
+
       // Summary
       BuildSummary summary = buildReport.summary;
       ReportSummary(summary);
@@ -110,7 +116,7 @@ namespace UnityBuilderAction
       Console.WriteLine(
         $"{EOL}" +
         $"###########################{EOL}" +
-        $"#      Build results      #{EOL}" +
+        $"#      Build results!      #{EOL}" +
         $"###########################{EOL}" +
         $"{EOL}" +
         $"Duration: {summary.totalTime.ToString()}{EOL}" +
