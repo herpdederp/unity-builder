@@ -93,14 +93,16 @@ namespace UnityBuilderAction
         target = (BuildTarget) Enum.Parse(typeof(BuildTarget), options["buildTarget"]),
       };
 
-      // Perform build
-      BuildReport buildReport = BuildPipeline.BuildPlayer(buildOptions);
+      
 
 	  string directory = "AssetBundles/StandaloneWindows";
       Directory.CreateDirectory(directory);
 
 	  //Perform bundle build
 	  BuildPipeline.BuildAssetBundles(directory,BuildAssetBundleOptions.None,buildOptions.target);
+	  
+	  // Perform build
+      BuildReport buildReport = BuildPipeline.BuildPlayer(buildOptions);
 
       // Summary
       BuildSummary summary = buildReport.summary;
