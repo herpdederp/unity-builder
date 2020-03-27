@@ -115,8 +115,10 @@ namespace UnityBuilderAction
       string directory = "AssetBundles/" + buildOptions.target.ToString();
       Directory.CreateDirectory(directory);
 
+      BuildAssetBundleOptions bundleOptions = BuildAssetBundleOptions.StrictMode & BuildAssetBundleOptions.ChunkBasedCompression;
+
       //Perform bundle build
-      BuildPipeline.BuildAssetBundles(directory, BuildAssetBundleOptions.None, buildOptions.target);
+      BuildPipeline.BuildAssetBundles(directory, bundleOptions, BuildTarget.StandaloneWindows);
 
       /*
       // Perform build
